@@ -1,4 +1,4 @@
-package br.com.schoolservice.model;
+package br.com.teacherservice.model;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
@@ -6,11 +6,12 @@ import javax.validation.constraints.NotEmpty;
 
 
 @Entity
-public class School extends AbstractEntity{
+public class Teacher extends AbstractEntity{
   @NotEmpty(message = "Field 'name' is mandatory!")
   private  String name;
   @NotEmpty
-  private String abbreviation;
+  @Email
+  private String email;
 
   public String getName() {
     return name;
@@ -20,11 +21,11 @@ public class School extends AbstractEntity{
     this.name = name;
   }
 
-  public String getAbbreviation() {
-    return abbreviation;
+  public String getEmail() {
+    return email;
   }
 
-  public void setAbbreviation(String email) {
-    this.abbreviation = email;
+  public void setEmail(String email) {
+    this.email = email;
   }
 }
