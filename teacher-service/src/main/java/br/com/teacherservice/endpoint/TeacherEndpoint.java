@@ -3,6 +3,7 @@ package br.com.teacherservice.endpoint;
 import br.com.teacherservice.error.ResourceNotFoundException;
 import br.com.teacherservice.model.School;
 import br.com.teacherservice.model.Teacher;
+import br.com.teacherservice.proxies.SchoolProxy;
 import br.com.teacherservice.repository.TeacherRepository;
 import br.com.teacherservice.services.SchoolService;
 import java.util.List;
@@ -24,8 +25,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("teachers")
 public class TeacherEndpoint {
   private final TeacherRepository teacherRepository;
-  private School school;
+  @Autowired
   private SchoolService schoolService;
+
+  private SchoolProxy schoolProxy;
 
   @Autowired
   public TeacherEndpoint(TeacherRepository teacherRepository) {

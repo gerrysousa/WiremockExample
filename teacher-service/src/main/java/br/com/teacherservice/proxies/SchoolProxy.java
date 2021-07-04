@@ -2,6 +2,7 @@ package br.com.teacherservice.proxies;
 
 import br.com.teacherservice.model.School;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -11,14 +12,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class SchoolProxy {
-  private static final String SCHOOLS = "/v1/schools";
-  private RestTemplate restTemplate;
+
+  private static final String SCHOOLS = "/schools";
+  @Autowired
+  private final RestTemplate restTemplate;
   private String url;
 
-  public SchoolProxy() {
-  }
-
-  public SchoolProxy(RestTemplate restTemplate) {
+  public SchoolProxy(final RestTemplate restTemplate) {
     this.restTemplate = restTemplate;
   }
 
