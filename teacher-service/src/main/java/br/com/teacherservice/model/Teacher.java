@@ -1,6 +1,11 @@
 package br.com.teacherservice.model;
 
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -12,6 +17,8 @@ public class Teacher extends AbstractEntity{
   @NotEmpty
   @Email
   private String email;
+  @ElementCollection
+  private List<String> schools;
 
   public String getName() {
     return name;
@@ -28,4 +35,13 @@ public class Teacher extends AbstractEntity{
   public void setEmail(String email) {
     this.email = email;
   }
+
+  public List<String> getSchools() {
+    return schools;
+  }
+
+  public void setSchools(List<String> schools) {
+    this.schools = schools;
+  }
+
 }

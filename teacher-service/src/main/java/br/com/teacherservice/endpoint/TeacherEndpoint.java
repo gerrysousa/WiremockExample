@@ -1,8 +1,11 @@
 package br.com.teacherservice.endpoint;
 
 import br.com.teacherservice.error.ResourceNotFoundException;
+import br.com.teacherservice.model.School;
 import br.com.teacherservice.model.Teacher;
 import br.com.teacherservice.repository.TeacherRepository;
+import br.com.teacherservice.services.SchoolService;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("teachers")
 public class TeacherEndpoint {
   private final TeacherRepository teacherRepository;
+  private School school;
+  private SchoolService schoolService;
 
   @Autowired
   public TeacherEndpoint(TeacherRepository teacherRepository) {
@@ -42,6 +47,18 @@ public class TeacherEndpoint {
   @GetMapping(path = "/findByName/{name}")
   public ResponseEntity<?> getTeacherByName(@PathVariable String name) {
       return new ResponseEntity<>(teacherRepository.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
+  }
+
+  @GetMapping(path = "/{id}/schools")
+  public ResponseEntity<?> getSchoolByTeacher(@PathVariable("id") Long id) {
+    verifyIfTeacherExists(id);
+    Teacher teacher = teacherRepository.findById(id).get();
+
+    List<String> schoolList= teacher.getSchools();
+
+    List<School> schools = schoolService.getSchools(schoolList);
+
+    return new ResponseEntity<>(schools, HttpStatus.OK);
   }
 
   @PostMapping

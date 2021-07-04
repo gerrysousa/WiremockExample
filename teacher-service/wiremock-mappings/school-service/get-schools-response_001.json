@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/schools",
+    "queryParameters": {
+      "id": {
+        "equalTo": "1"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": [
+        {
+          "id": 1,
+          "name": "School New Future _20210704_1301719",
+          "abbreviation": "_20210704_1301719"
+        }
+    ]
+  }
+}
