@@ -1,0 +1,34 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/schools/"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": [
+      {
+        "id": 1,
+        "name": "School New Future _20210704_1301719",
+        "abbreviation": "MOCK_01"
+      },
+      {
+        "id": 2,
+        "name": "School New Future _20210704_1301719",
+        "abbreviation": "MOCK_02"
+      },
+      {
+        "id": 3,
+        "name": "School New Future _20210704_1314390",
+        "abbreviation": "MOCK_03"
+      },
+      {
+        "id": 4,
+        "name": "School New Future _20210704_1314136",
+        "abbreviation": "MOCK_04"
+      }
+    ]
+  }
+}
