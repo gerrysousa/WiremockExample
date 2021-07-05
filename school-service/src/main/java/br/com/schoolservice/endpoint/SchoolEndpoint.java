@@ -3,6 +3,7 @@ package br.com.schoolservice.endpoint;
 import br.com.schoolservice.error.ResourceNotFoundException;
 import br.com.schoolservice.model.School;
 import br.com.schoolservice.repository.SchoolRepository;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,7 +30,11 @@ public class SchoolEndpoint {
   }
 
   @GetMapping
-  public ResponseEntity<?> listAll() {
+  public ResponseEntity<?> listAll(@RequestParam(required = false) List<Long> id) {
+    if (id!=null){
+      return new ResponseEntity<>(schoolRepository.findAllById(id), HttpStatus.OK);
+
+    }
     return new ResponseEntity<>(schoolRepository.findAll(), HttpStatus.OK);
   }
 
