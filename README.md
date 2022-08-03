@@ -3,6 +3,7 @@
 Simple project to demonstrate wiremock utilization.
 
 This project contains 2 microservices.
+
 Service 1 - Schools
 - Endpoints
     - POST http://localhost:4000/schools (To insert a new school on Database)
@@ -51,7 +52,7 @@ Access the "teacher-service" folder, and run the comand below to start a docker 
 ```$docker-compose up ```
 
 - Inside your IDE, run the SchoolServiceApplication, the microservice will be  available on port 4000, you can change the port number by application.properties  
-
+---
 If you need the Wiremock simulation.
 Access the "teacher-service" folder, and run the comand below to start a docker container with MySQL.
 
